@@ -1,0 +1,134 @@
+@import 'modern-normalize/modern-normalize.css';
+
+
+/* Container */
+.container-full {
+  margin-inline: auto;
+  padding-inline: 60px;
+  box-sizing: content-box;
+  @media screen and (max-width: 768px) {
+    padding-inline: 40px;
+  }
+  @media screen and (max-width: 576px) {
+    padding-inline: 20px;
+  }
+}
+
+.container-lg {  
+  box-sizing: content-box;
+  margin-inline: auto;
+  padding-inline: clamp(60px, 8.4vw, 160px);
+  max-width: 1600px;
+  /* max-width: calc(1600px - clamp(60px, 8.4vw, 160px) * 2); */
+  @media screen and (max-width: 768px) {
+    padding-inline: 40px;
+  }
+
+  @media screen and (max-width: 576px) {
+    padding-inline: 20px;
+  }
+}
+
+.container-md {
+  box-sizing: content-box;
+  margin-inline: auto;
+  padding-inline: clamp(60px, 8.4vw, 160px);
+  max-width: 1330px;
+  @media screen and (max-width: 768px) {
+      padding-inline: 40px;
+  }
+  @media screen and (max-width: 576px) {
+    padding-inline: 20px;
+  }
+}
+
+.blue-light {
+  color: var(--color-blue-light);
+}
+
+.bg-white {
+  background-color: var(--color-white);
+  color: var(--color-dark-blue);
+  padding-bottom: 284px;
+  @media screen and (max-width: 768px) {
+    padding-bottom: 120px;
+  }
+  @media screen and (max-width: 576px) {
+    padding-bottom: 80px;
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Remove list styles on ul, ol elements */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove default button styles */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* A elements that don't have a class get default styles */
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+

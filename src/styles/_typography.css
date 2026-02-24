@@ -1,0 +1,178 @@
+@import url('https://use.typekit.net/mlu8azl.css');
+
+/* Tiller - primary typeface */
+/* @font-face {
+  font-family: "Tiller";
+  src: url("../../assets/fonts/Tiller-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tiller";
+  src: url("../../assets/fonts/Tiller-RegularItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tiller";
+  src: url("../../assets/fonts/Tiller-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tiller";
+  src: url("../../assets/fonts/Tiller-MediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tiller";
+  src: url("../../assets/fonts/Tiller-Demi.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tiller";
+  src: url("../../assets/fonts/Tiller-DemiItalic.otf") format("opentype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tiller";
+  src: url("../../assets/fonts/Tiller-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tiller";
+  src: url("../../assets/fonts/Tiller-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tiller";
+  src: url("../../assets/fonts/Tiller-Heavy.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tiller";
+  src: url("../../assets/fonts/Tiller-HeavyItalic.otf") format("opentype");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+} */
+
+/* Scala Sans - secondary typeface */
+/* @font-face {
+  font-family: "Scala Sans";
+  src: url("../../assets/fonts/ScalaSans Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+} */
+
+:root {
+  --font-tiller: "Tiller", system-ui, sans-serif;
+  --font-scala-sans: "ff-scala-sans-pro", system-ui, sans-serif;
+  --font-heading: var(--font-tiller);
+  --font-body: var(--font-scala-sans);
+  --text-sm: 0.9375rem;
+}  
+
+p {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-top: 0;
+  padding-block: 0;
+  padding-inline: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-block-start: 0;
+}
+
+/* Headings */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-heading);
+		padding: 0;
+		margin: 0;
+		padding-block: 0;
+	}
+
+.display {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6.3vw, 8rem);
+  font-style: normal;
+  font-weight: 850;
+  line-height: 86%;
+  text-transform: uppercase;
+  /* @media screen and (max-width: 768px) {
+    font-size: clamp(32px, 12.65vw, 96px);
+  } */
+  @media screen and (max-width: 576px) {
+    font-size: 30px;
+  }
+}
+
+.heading-h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1; /* 100% */
+  text-transform: uppercase;
+  @media screen and (max-width: 768px) {
+    font-size: 1.25rem;
+    line-height: 120%;
+  }
+}
+
+.subheader-lg {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 133.333%;
+  text-transform: uppercase;
+  @media screen and (max-width: 768px) {
+    font-size: 1.125rem;
+    line-height: 122.222%;
+  }
+}
+
+.subheader {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 133%;
+  text-transform: uppercase;
+  @media screen and (max-width: 768px) {
+    font-size: 1.125rem;
+    line-height: 122%;
+  }
+}
+
+.body-button {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  text-transform: uppercase;  
+}

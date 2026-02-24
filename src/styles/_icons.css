@@ -1,0 +1,57 @@
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  background-color: currentColor;
+}
+
+/* Icon Variants */
+.icon-person {
+  mask-image: url("../icons/icon-profile.svg");
+}
+
+.icon-x {
+  mask-image: url("../icons/icon-x.svg");
+}
+
+.icon-youtube {
+  mask-image: url("../icons/icon-youtube.svg");
+}
+
+.icon-instagram {
+  mask-image: url("../icons/icon-instagram.svg");
+}
+
+.icon-fb {
+  mask-image: url("../icons/icon-fb.svg");
+}
+
+.icon-accordion-item {
+  mask-image: url("../icons/accordion-item-icon.svg");
+}
+
+.icon-arrow-right {
+  mask-image: url("../icons/icon-arrow.svg");
+}
+
+.icon-play {
+  mask-image: url("../icons/icon-play.svg");
+}
+
+.icon-pause {
+  mask-image: url("../icons/icon-pause.svg");
+}
+
+.icon-sound-on {
+  mask-image: url("../icons/icon-sound-on.svg");
+}
+
+.icon-sound-off {
+  mask-image: url("../icons/icon-sound-off.svg");
+}

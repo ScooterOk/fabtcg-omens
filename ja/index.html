@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>omens</title>
+</head>
+
+<body>
+  {{> header }}
+  <main id="app">
+    {{> hero }}
+    {{> video-player }}
+    {{> promo }}
+    {{> heroes }}
+    {{> premiere }}    
+    {{> armory-deck }}
+    {{> lightning-flow }}
+    <div class="bg-white">
+      {{> store }}
+      {{> sign-up }}
+      {{> product-overview }}
+      {{> resources }}
+      {{> credits }}
+    </div>
+  </main>
+  {{> footer }}
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

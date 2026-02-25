@@ -9,7 +9,12 @@ export default defineConfig({
     handlebars({
       partialDirectory: resolve(__dirname, "src/partials"),
       context(pagePath) {
-        return pagePath.includes("/ja/") ? ja : en;
+        const context = pagePath.includes("/ja/") ? ja : en;
+        return {
+            ...context,
+            isJa: pagePath.includes("/ja/"),
+            isEn: !pagePath.includes("/ja/")
+        };
       },
     }),
   ],

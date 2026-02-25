@@ -139,14 +139,25 @@
         <li class="header__navigation_item lng-mobile">
           <a role="button" aria-haspopup="true">
             <span>
+              {{#if isJa}}
+              <img src="https://fabtcg.com/wp-content/plugins/wpml-multilingual-cms/res/flags/ja.svg" alt="Japanese">
+              日本語
+              {{else}}
               <img src="/img/en.svg" alt="English">
               English
+              {{/if}}
             </span>
           </a>
           <div class="sub-menu">
             <div class="sub-menu__wrapper">
               <ul class="sub-menu__list">
                 <li class="sub-menu__item">
+                  {{#if isJa}}
+                  <a href="/" title="Switch to English" aria-label="Switch to English" role="menuitem">
+                    <img src="/img/en.svg" alt="English">
+                    <span>English</span>
+                  </a>
+                  {{else}}
                   <a href="/ja/" title="Switch to Japanese(日本語)" aria-label="Switch to Japanese(日本語)"
                     role="menuitem">                    
                     <span class="native" lang="ja">日本語</span>
@@ -154,6 +165,7 @@
                       (Japanese)
                     </span>
                   </a>
+                  {{/if}}
                 </li>
               </ul>
             </div>
@@ -167,12 +179,22 @@
         </a>
         <div class="header__settings_lng">
           <a href="">
+            {{#if isJa}}
+            <img src="https://fabtcg.com/wp-content/plugins/wpml-multilingual-cms/res/flags/ja.svg" alt="Japanese">
+            {{else}}
             <img src="/img/en.svg" alt="English">
+            {{/if}}
           </a>
           <div class="sub-menu">
             <div class="sub-menu__wrapper">
               <ul class="sub-menu__list">
                 <li class="sub-menu__item">
+                  {{#if isJa}}
+                  <a href="/" title="Switch to English" aria-label="Switch to English" role="menuitem">
+                    <img src="/img/en.svg" alt="English">
+                    <span>English</span>
+                  </a>
+                  {{else}}
                   <a href="/ja/" title="Switch to Japanese(日本語)" aria-label="Switch to Japanese(日本語)" role="menuitem">
                     <img class="" src="https://fabtcg.com/wp-content/plugins/wpml-multilingual-cms/res/flags/ja.svg" alt="" />
                     <span class="native" lang="ja">日本語</span>                    
@@ -180,6 +202,7 @@
                       (Japanese)
                     </span>                    
                   </a>
+                  {{/if}}
                 </li>                
               </ul>
             </div>

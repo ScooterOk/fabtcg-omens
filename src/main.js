@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initOmesVideoPlayer();
   initOmensVideo();
   initHeroesList();
+  initLightningFlow();
 });
 
 function initHeaderNavigationToggle() {
@@ -194,14 +195,99 @@ function initOmensVideo() {
 function initHeroesList() {
   const heroesListItems = document.querySelectorAll('#heroes-list .heroes__item');
 
-  if (heroesListItems.length > 0) {    
-    heroesListItems.forEach(item => {
-      const button = item.querySelector('.heroes__item_button');
-      button.addEventListener('click', () => {
-        item.classList.toggle('collapsed');
-      });
+  if (heroesListItems.length === 0) return;
+
+  heroesListItems.forEach(item => {
+    const button = item.querySelector('.heroes__item_button');
+    button.addEventListener('click', () => {
+      item.classList.toggle('collapsed');
     });
-  }
+  });
+
+  const mm = gsap.matchMedia();
+
+  mm.add('(min-width: 577px)', () => {
+    const timelines = [];
+
+    heroesListItems.forEach(item => {
+      const name = item.dataset.name;
+      const wrapper = item.querySelector('.heroes__item_wrapper');
+      const card = item.querySelector('.heroes__item_card');
+      const head = card.querySelector('.heroes__item_card_head');
+      const description = card.querySelector('.heroes__item_card_description');
+      const h3 = item.querySelectorAll('.heroes__item_content h3.heading-h2');
+      const subheader = item.querySelectorAll('.heroes__item_content .subheader-lg');
+      const p = item.querySelectorAll('.heroes__item_content p');
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 60%',
+          invalidateOnRefresh: true,
+        }
+      }).timeScale(1)
+        .fromTo(wrapper, {
+          clipPath: 'inset(15% 15% round 32px)',
+          yPercent: 85,
+        }, {
+          clipPath: 'inset(0% 0% round 32px)',
+          yPercent: 0,
+          duration: 1.2,
+          ease: 'power3.out',
+        }, 'start')
+        .from(card, {
+          scale: 2.4,
+          xPercent: name === 'zyggy' ? 70 : -70,
+          yPercent: 45,
+          duration: 1.2,
+          ease: 'power2.out',
+        }, 'start')
+        .from(head, {
+          yPercent: -100,
+          opacity: 0,
+          duration: 0.7,
+          ease: 'power3.out',
+        }, '-=0.3')
+        .from(description, {
+          yPercent: 100,
+          opacity: 0,
+          duration: 0.7,
+          ease: 'power2.out',
+        }, '<')
+        .fromTo(h3, {
+          immediateRender: true,
+          opacity: 0,
+          y: 50,
+        }, {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: 'power2.out',
+        }, '<')
+        .fromTo(subheader, {
+          opacity: 0,
+          y: 50,
+        }, {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: 'power2.out',
+        }, '<+=0.3')
+        .fromTo(p, {
+          opacity: 0,
+          y: 50,
+        }, {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: 'power2.out',
+        }, '<+=0.2');
+
+      timelines.push(tl);
+    });
+
+    return () => timelines.forEach(tl => tl.kill());
+  });
 }
 
 function initHeroPopup() {
@@ -218,4 +304,49 @@ function initHeroPopup() {
       });      
     });
   }
+}
+
+function initLightningFlow() {
+  const lightningFlowGrid = document.getElementById('lightning-flow-grid');
+  const imageLeft = lightningFlowGrid?.querySelector('img:first-child');
+  const imageCenter = lightningFlowGrid?.querySelector('img:nth-child(2)');
+  const imageRight = lightningFlowGrid?.querySelector('img:last-child');
+
+  if (!lightningFlowGrid) return;
+
+  const mm = gsap.matchMedia();
+
+  mm.add('(min-width: 577px)', () => {
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: '#lightning-flow-grid-wrapper',
+        start: 'top 60%',
+        invalidateOnRefresh: true,        
+      }
+    }).timeScale(1)
+      .fromTo(lightningFlowGrid, {
+        clipPath: 'inset(15% 15% round 32px)',
+        yPercent: 85,
+      }, {
+        clipPath: 'inset(0% 0% round 32px)',
+        yPercent: 0,
+        duration: 1.2,
+        ease: 'power3.out',
+      }, 'start')
+      .from(imageCenter, {
+        scale: 2.6,
+        duration: 1.2,
+        ease: 'power3.out',
+      }, '<')
+      .from(imageLeft, {
+        xPercent: 100,
+        duration: 1.2,
+        ease: 'power3.out',
+      }, '-=0.7')
+      .from(imageRight, {
+        xPercent: -100,
+        duration: 1.2,
+        ease: 'power3.out',
+      }, '<');
+  });
 }

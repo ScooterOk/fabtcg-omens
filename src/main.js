@@ -348,6 +348,8 @@ function initLightningFlow() {
   const imageCenter = lightningFlowGrid?.querySelector('img:nth-child(2)');
   const imageRight = lightningFlowGrid?.querySelector('img:last-child');
 
+  console.log('lightningFlowGrid!!!!', lightningFlowGrid);
+
   if (!lightningFlowGrid) return;
 
   const mm = gsap.matchMedia();
@@ -357,7 +359,8 @@ function initLightningFlow() {
       scrollTrigger: {
         trigger: '#lightning-flow-grid-wrapper',
         start: 'top 60%',
-        invalidateOnRefresh: true,        
+        invalidateOnRefresh: true,
+        markers: true,
       }
     }).timeScale(1)
       .fromTo(lightningFlowGrid, {

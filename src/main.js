@@ -8,10 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initHeroPopup();
   initHeaderNavigationToggle();
-  initOmesVideoPlayer();
+  // initOmesVideoPlayer();
   initOmensVideo();
   initHeroesList();
   initLightningFlow();
+  initArmoryDeck();
+  initStoreCards();
 });
 
 function initHeaderNavigationToggle() {
@@ -19,9 +21,7 @@ function initHeaderNavigationToggle() {
     "header-navigation-toggle-button",
   );
   const navigation = document.getElementById("header-navigation");
-  const navigationItems = document.querySelectorAll("#header-navigation .header__navigation_item:has(.sub-menu) > a");  
-
-  console.log('navigationItems', navigationItems);
+  const navigationItems = document.querySelectorAll("#header-navigation .header__navigation_item:has(.sub-menu) > a");   
   
 
   if (toggleButton && navigation) {
@@ -197,6 +197,7 @@ function initHeroesList() {
 
   if (heroesListItems.length === 0) return;
 
+  // Toggle mobile description
   heroesListItems.forEach(item => {
     const button = item.querySelector('.heroes__item_button');
     button.addEventListener('click', () => {
@@ -204,12 +205,12 @@ function initHeroesList() {
     });
   });
 
+  // Animations for desktop
   const mm = gsap.matchMedia();
-
   mm.add('(min-width: 577px)', () => {
     const timelines = [];
 
-    heroesListItems.forEach(item => {
+    heroesListItems.forEach((item, index) => {
       const name = item.dataset.name;
       const wrapper = item.querySelector('.heroes__item_wrapper');
       const card = item.querySelector('.heroes__item_card');
@@ -232,27 +233,27 @@ function initHeroesList() {
         }, {
           clipPath: 'inset(0% 0% round 32px)',
           yPercent: 0,
-          duration: 1.2,
-          ease: 'power3.out',
+          duration: 1.3,
+          ease: 'power4.out',
         }, 'start')
         .from(card, {
           scale: 2.4,
           xPercent: name === 'zyggy' ? 70 : -70,
           yPercent: 45,
-          duration: 1.2,
-          ease: 'power2.out',
+          duration: 1.3,
+          ease: 'power3.out',
         }, 'start')
         .from(head, {
           yPercent: -100,
           opacity: 0,
-          duration: 0.7,
-          ease: 'power3.out',
+          duration: 1,
+          ease: 'power4.out',
         }, '-=0.3')
         .from(description, {
           yPercent: 100,
           opacity: 0,
-          duration: 0.7,
-          ease: 'power2.out',
+          duration: 1,
+          ease: 'power4.out',
         }, '<')
         .fromTo(h3, {
           immediateRender: true,
@@ -261,8 +262,8 @@ function initHeroesList() {
         }, {
           opacity: 1,
           y: 0,
-          duration: 0.7,
-          ease: 'power2.out',
+          duration: 1,
+          ease: 'power3.out',
         }, '<')
         .fromTo(subheader, {
           opacity: 0,
@@ -270,8 +271,8 @@ function initHeroesList() {
         }, {
           opacity: 1,
           y: 0,
-          duration: 0.7,
-          ease: 'power2.out',
+          duration: 1,
+          ease: 'power3.out',
         }, '<+=0.3')
         .fromTo(p, {
           opacity: 0,
@@ -284,7 +285,42 @@ function initHeroesList() {
         }, '<+=0.2');
 
       timelines.push(tl);
+
+
+
+
+      item.addEventListener('mousemove', (e) => {
+        const card = item.querySelector('.heroes__item_illustration');
+        
+        // Coordinate normalization (-1 to 1)
+        const x = (e.clientX / window.innerWidth - 0.5) * 4;
+        const y = (e.clientY / window.innerHeight - 0.5) * 4;
+
+        const direction = index % 2 === 0 ? 1 : -1;
+
+        gsap.to(card, {
+          rotationY: x * 3 * direction,
+          rotationX: -y * 3 * direction,
+          duration: 1,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        });
+      });
+
+      item.addEventListener('mouseleave', () => {
+        const card = item.querySelector('.heroes__item_illustration');
+        
+        gsap.to(card, {
+          rotationY: 0,
+          rotationX: 0,
+          duration: 1,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        });
+      });
     });
+
+    
 
     return () => timelines.forEach(tl => tl.kill());
   });
@@ -330,23 +366,102 @@ function initLightningFlow() {
       }, {
         clipPath: 'inset(0% 0% round 32px)',
         yPercent: 0,
-        duration: 1.2,
-        ease: 'power3.out',
+        duration: 1.5,
+        ease: 'power4.out',
       }, 'start')
       .from(imageCenter, {
         scale: 2.6,
-        duration: 1.2,
-        ease: 'power3.out',
+        duration: 1.5,
+        ease: 'power4.out',
       }, '<')
       .from(imageLeft, {
         xPercent: 100,
-        duration: 1.2,
-        ease: 'power3.out',
-      }, '-=0.7')
+        duration: 1.5,
+        ease: 'power4.out',
+      }, '-=0.9')
       .from(imageRight, {
         xPercent: -100,
-        duration: 1.2,
-        ease: 'power3.out',
+        duration: 1.5,
+        ease: 'power4.out',
       }, '<');
+  });
+}
+
+function initArmoryDeck() {
+  const armoryDeck = document.querySelector('.armory-deck__illustration');
+  const armoryDeckBg = armoryDeck?.querySelector('.armory-deck__illustration_bg');
+
+  if (!armoryDeck) return;
+
+  const mm = gsap.matchMedia();
+
+  mm.add('(min-width: 577px)', () => {
+    armoryDeck.addEventListener('mousemove', (e) => {
+      // Coordinate normalization (-1 to 1)
+      const x = (e.clientX / window.innerWidth - 0.5) * 5;
+      const y = (e.clientY / window.innerHeight - 0.5) * 5;
+
+      gsap.to(armoryDeckBg, {
+        rotationY: x * 3,
+        rotationX: -y * 3,
+        scale: 1.15,
+        duration: 1,
+        ease: 'power2.out',
+        overwrite: 'auto',
+      });
+    });
+
+    armoryDeck.addEventListener('mouseleave', () => {
+      gsap.to(armoryDeckBg, {
+        rotationY: 0,
+        rotationX: 0,
+        scale: 1,
+        duration: 1,
+        ease: 'power2.out',
+        overwrite: 'auto',
+      });
+    });
+  });
+}
+
+function initStoreCards() {
+  const storeCards = document.querySelectorAll('.store__card');
+
+  if (storeCards.length === 0) return;
+
+  const mm = gsap.matchMedia();
+
+  mm.add('(min-width: 577px)', () => {
+    storeCards.forEach((card) => {
+      const cardBg = card.querySelector('.store__card_bg');
+
+      if (!cardBg) return;
+
+      card.addEventListener('mousemove', (e) => {
+        // Coordinate normalization (-1 to 1)
+        const x = (e.clientX / window.innerWidth - 0.5) * 5;
+        const y = (e.clientY / window.innerHeight - 0.5) * 5;
+
+        gsap.to(cardBg, {
+          rotationY: x * 3,
+          rotationX: -y * 3,
+          scale: 1.1,
+          duration: 1,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(cardBg, {
+          rotationY: 0,
+          rotationX: 0,
+          scale: 1,
+          duration: 1,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        });
+      });
+    });
   });
 }

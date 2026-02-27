@@ -144,9 +144,9 @@
 			overflow: hidden;
 			margin: auto;
 			border-radius: 1rem;
-			@media screen and (max-width: 576px) {
+			/* @media screen and (max-width: 576px) {
 				aspect-ratio: 0.75;
-			}
+			} */
 
 			& .preview-video_wrapper {
 				z-index: 1;
@@ -170,7 +170,8 @@
 
 			& .preview-video_embed {
 				aspect-ratio: 16 / 9;
-				pointer-events: none;
+        /* TODO: return after custom player back */
+				/* pointer-events: none; */
 				object-fit: cover;
 				justify-content: center;
 				align-items: center;
@@ -180,11 +181,11 @@
 				position: absolute;
 				inset: 0% auto;
 				background-color: var(--color-foreground);
-				@media screen and (max-width: 576px) {
-					aspect-ratio: 0.75;
+				@media screen and (max-width: 576px) {					
 					width: 100%;
+          min-width: auto;
 				}
-				video, img {
+				video, img, iframe {
 					width: 100%;
 					height: 100%;
 					object-fit: cover;
@@ -209,9 +210,9 @@
 				inset: 0%;
 				overflow: hidden;
 				visibility: hidden;
-				@media screen and (max-width: 576px) {
+				/* @media screen and (max-width: 576px) {
 					aspect-ratio: 0.75;
-				}
+				} */
 			}
 
 			& .player-video_embed {
@@ -225,10 +226,10 @@
 				position: absolute;
 				inset: 0% auto;
 				background-color: var(--color-foreground);
-				@media screen and (max-width: 576px) {
+				/* @media screen and (max-width: 576px) {
 					aspect-ratio: 0.75;
 					width: 100%;
-				}
+				} */
 				video {
 					width: 100%;
 					height: 100%;

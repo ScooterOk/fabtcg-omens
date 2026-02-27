@@ -2,7 +2,7 @@
   <div class="container-lg">
     <section class="footer__links">
       <div class="footer__links_part">
-        <h2>Social</h2>
+        <h2>{{footer_social}}</h2>
         <div class="footer__social-links">
           <a href="https://www.facebook.com/fabtcg" target="_blank" rel="noopener noreferrer">
             <span class="icon icon-fb"></span>
@@ -18,42 +18,46 @@
           </a>
         </div>
       </div>
+
       <div class="footer__links_part">
         <ul class="footer__menu">
           <li class="footer__menu_item">
-            <h2> Explore </h2>
-            <a href="">Articles</a>
-            <a href="">Rules and Policy</a>
-            <a href="">Card Vault</a>
-            <a href="">Gem Software</a>
-            <a href="">Retailer Quickstart</a>
+            <h2>{{footer_explore}}</h2>
+            <a href="">{{footer_articles}}</a>
+            <a href="">{{footer_rules_policy}}</a>
+            <a href="">{{footer_card_vault}}</a>
+            <a href="">{{footer_gem_software}}</a>
+            <a href="">{{footer_retailer_quickstart}}</a>
           </li>
 
           <li class="footer__menu_item">
-            <h2>Community</h2>
-            <a href="">Organized Play</a>
-            <a href="">Leaderboards</a>
-            <a href="">Decklists</a>
-            <a href="">Living Legend</a>
+            <h2>{{footer_community}}</h2>
+            <a href="">{{footer_organized_play}}</a>
+            <a href="">{{footer_leaderboards}}</a>
+            <a href="">{{footer_decklists}}</a>
+            <a href="">{{footer_living_legend}}</a>
           </li>
+
           <li class="footer__menu_item">
-            <h2>Company</h2>
-            <a href="">About Us</a>
-            <a href="">Terms of Service</a>
-            <a rel="privacy-policy" href="">Privacy Policy</a>
-            <a href="">Licensed Asset Usage</a>
-            <a href="">Replacement Policy</a>
+            <h2>{{footer_company}}</h2>
+            <a href="">{{footer_about_us}}</a>
+            <a href="">{{footer_terms_of_service}}</a>
+            <a rel="privacy-policy" href="">{{footer_privacy_policy}}</a>
+            <a href="">{{footer_licensed_asset_usage}}</a>
+            <a href="">{{footer_replacement_policy}}</a>
           </li>
         </ul>
       </div>
+
       <div class="footer__links_part">
         <a href="" class="footer__logo">
           <img src="/img/footer-logo.png" alt="">
         </a>
       </div>
     </section>
+
     <section class="footer__copyright">
-      © 2026 <a href="" target="_blank" rel="noopener noreferrer" class="underline">Legend Story Studios</a>
+      {{footer_copyright}} <a href="" target="_blank" rel="noopener noreferrer" class="underline">{{footer_company_name}}</a>
     </section>
   </div>
 </footer>

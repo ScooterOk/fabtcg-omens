@@ -359,8 +359,7 @@ function initLightningFlow() {
       scrollTrigger: {
         trigger: '#lightning-flow-grid-wrapper',
         start: 'top 60%',
-        invalidateOnRefresh: true,
-        markers: true,
+        invalidateOnRefresh: true,        
       }
     }).timeScale(1)
       .fromTo(lightningFlowGrid, {
